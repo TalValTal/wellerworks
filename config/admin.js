@@ -4,7 +4,7 @@ module.exports = ({ env }) => ({
       secret: 'f5d8b1a9c6e2447890123456789abcdef',
     },
     apiToken: {
-      salt: env('API_TOKEN_SALT','MoX8Thqvsdx2Z8db76IctQ==')
+      salt: env('API_TOKEN_SALT', 'MoX8Thqvsdx2Z8db76IctQ=='),
     },
     transfer: {
       token: {
