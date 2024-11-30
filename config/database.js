@@ -1,4 +1,6 @@
 const path = require('path');
+console.log('Resolved database file path:', path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')));
+
 
 module.exports = ({ env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
