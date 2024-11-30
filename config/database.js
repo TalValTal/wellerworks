@@ -1,9 +1,20 @@
 const path = require('path');
-console.log('Resolved database file path:', path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')));
-
+const fs = require('fs');
 
 module.exports = ({ env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
+
+  const sqliteFilePath = path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db'));
+
+  // Debug log to verify the resolved SQLite database file path
+  console.log('Resolved database file path for SQLite:', sqliteFilePath);
+
+  // Ensure the `.tmp` directory exists for SQLite
+  const tmpDir = path.join(__dirname, '..', '.tmp');
+  if (!fs.existsSync(tmpDir)) {
+    fs.mkdirSync(tmpDir, { recursive: true });
+    console.log('.tmp directory created successfully');
+  }
 
   const connections = {
     mysql: {
@@ -46,7 +57,7 @@ module.exports = ({ env }) => {
     },
     sqlite: {
       connection: {
-        filename: path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')),
+        filename: sqliteFilePath,
       },
       useNullAsDefault: true,
     },
