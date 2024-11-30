@@ -1,7 +1,26 @@
-module.exports = ({ env }) => ({
-  'users-permissions': {
+module.exports = {
+  'upload': {
     config: {
-      jwtSecret: env('JWT_SECRET', 'b1a9c6e2f5d8447890123456789abcdef')
+      providerOptions: {
+        sizeLimit: 10000000 // 10mb in bytes
+      }
+    }
+  },
+  email: {
+    config: {
+      provider: 'nodemailer',
+      providerOptions: {
+        host: 'smtp.ionos.com',
+        port: 587,
+        auth: {
+          user: process.env.SMTP_USERNAME,
+          pass: process.env.SMTP_PASSWORD,
+        },
+      },
+      settings: {
+        defaultFrom: 'your@wellerworks.co.uk',
+        defaultReplyTo: 'your@wellerworks.co.uk',
+      },
     },
   },
-});
+};

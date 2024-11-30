@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contact_submissions",
+  "info": {
+    "singularName": "contact-submission",
+    "pluralName": "contact-submissions",
+    "displayName": "Contact Submission"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "First_Name": {
+      "type": "string"
+    },
+    "Last_name": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "Message": {
+      "type": "richtext"
+    },
+    "Status_submission": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Responded",
+        "Archived"
+      ]
+    }
+  }
+}
